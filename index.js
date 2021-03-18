@@ -229,9 +229,8 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
-}
+
+
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 const newFlavors = [
@@ -313,6 +312,23 @@ const regionalFlavors = [
     "Chocolate Chocolate Chip Cheesecake",
     "Caramel 'n' Cookies"
 ]
+
+function getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors){
+    let randomFlavors = [];
+    let allFlavorArray = [originalFlavors, newFlavors, seasonalFlavors, regionalFlavors]
+    let length = Math.min(originalFlavors.length, newFlavors.length, seasonalFlavors.length, regionalFlavors.length) - 1;
+    while(true) {
+        let choice = Math.floor(Math.random()* length)
+        for(let arr of allFlavorArray) {
+            randomFlavors.push(arr[choice])
+            if(randomFlavors.length === 31) {
+                return randomFlavors
+            }
+        }
+    }
+    
+}
+console.log(getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors))
 
 
 
